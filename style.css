@@ -21,10 +21,10 @@ body {
 
 .sliderContainer {
     width: 250px;
-  }
+}
   
 
-  .slider {
+.slider {
     -webkit-appearance: none;  
     appearance: none;
     width: 100%; 
@@ -35,23 +35,28 @@ body {
     opacity: 0.7; 
     -webkit-transition: .2s; 
     transition: opacity .2s;
-  }
+}
   
  
-  .slider:hover {
+.slider:hover {
     opacity: 1; 
-  }
+}
   
-  .slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
     height: 25px; 
     background: #525554; 
     cursor: pointer; 
-  }
+}
 
-  .sliderValueText {
+.sliderValueText {
     text-align: center;
     margin: 0;
-  }
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
