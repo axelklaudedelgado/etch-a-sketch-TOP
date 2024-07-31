@@ -1,15 +1,3 @@
-let slider = document.querySelector("#gridSlider");
-let output = document.querySelector("#sliderValue");
-output.innerHTML = slider.value + "x" + slider.value; 
-
-slider.oninput = function() {
-  output.innerHTML = this.value + "x" + this.value;
-}
-
-let container = document.querySelector("#grid-container");
-
-createGridBoxes(slider.value);
-
 function createGridBoxes (sliderValue) {
   let divsToAdd = document.createDocumentFragment();
   for(let i=0; i < sliderValue * sliderValue; i++){
@@ -37,7 +25,19 @@ function deleteGridBoxes() {
   }
 }
 
+let container = document.querySelector("#grid-container");
+
+let slider = document.querySelector("#gridSlider");
+let output = document.querySelector("#sliderValue");
+output.innerHTML = slider.value + "x" + slider.value; 
+
+slider.oninput = function() {
+  output.innerHTML = this.value + "x" + this.value;
+}
+
 slider.onchange = function () {
   deleteGridBoxes();
   createGridBoxes(this.value);
 }
+
+createGridBoxes(slider.value);
