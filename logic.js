@@ -36,3 +36,8 @@ function deleteGridBoxes() {
       box = container.lastElementChild;
   }
 }
+
+slider.onchange = function () {
+  deleteGridBoxes();
+  createGridBoxes(this.value);
+}
