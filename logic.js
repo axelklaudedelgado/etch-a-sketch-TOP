@@ -29,10 +29,10 @@ function createGridBoxes (sliderValue) {
   }
 }
 
-function deleteChild() {
-  let child = container.lastElementChild;
-  while (child) {
-      container.removeChild(child);
-      child = container.lastElementChild;
+function deleteGridBoxes() {
+  let box = container.lastElementChild;
+  while (box) {
+      container.removeChild(box);
+      box = container.lastElementChild;
   }
 }
