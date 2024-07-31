@@ -1,12 +1,16 @@
 body {
     background-color: rgb(255, 246, 246);
     height: 100vh;
+}
+
+#container {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#container {
+#grid-container {
     width: 550px;
     height: 550px;
     border: 2px solid rgb(182, 180, 180);
