@@ -8,19 +8,23 @@ slider.oninput = function() {
 
 let container = document.querySelector("#grid-container");
 
-let divToAdd = document.createDocumentFragment();
-for(let i=0; i < slider.value * slider.value; i++){
-   let newDiv = document.createElement('div');
-   newDiv.id = 'box' + i;
-   newDiv.className = 'gridBox';
-   divToAdd.appendChild(newDiv);
-}
+createGridBoxes(slider.value);
 
-container.appendChild(divToAdd);
+function createGridBoxes (sliderValue) {
+  let divsToAdd = document.createDocumentFragment();
+  for(let i=0; i < sliderValue * sliderValue; i++){
+    let newDiv = document.createElement('div');
+    newDiv.id = 'box' + i;
+    newDiv.className = 'gridBox';
+    divsToAdd.appendChild(newDiv);
+  }
 
-let gridValueCalculation = 100 / slider.value;
+  container.appendChild(divsToAdd);
 
-let gridBoxes = document.querySelectorAll(".gridBox");
-for (let i = 0; i < gridBoxes.length; i++) {
-    gridBoxes[i].style.flex = `1 0 ${gridValueCalculation}%`;
+  let gridValueCalculation = 100 / slider.value;
+
+  let gridBoxes = document.querySelectorAll(".gridBox");
+  for (let i = 0; i < gridBoxes.length; i++) {
+      gridBoxes[i].style.flex = `1 0 ${gridValueCalculation}%`;
+  }
 }
