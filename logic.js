@@ -28,3 +28,11 @@ function createGridBoxes (sliderValue) {
       gridBoxes[i].style.flex = `1 0 ${gridValueCalculation}%`;
   }
 }
+
+function deleteChild() {
+  let child = container.lastElementChild;
+  while (child) {
+      container.removeChild(child);
+      child = container.lastElementChild;
+  }
+}
