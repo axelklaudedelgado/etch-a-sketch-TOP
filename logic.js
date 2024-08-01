@@ -5,8 +5,8 @@ function createGridBoxes (sliderValue) {
     const newDiv = document.createElement('div');
     newDiv.id = 'box' + i;
     newDiv.className = "gridBox";
-    newDiv.addEventListener('mouseover', boxToBlack);
-    newDiv.addEventListener('mousedown', boxToBlack);
+    newDiv.addEventListener('mouseover', changeColor);
+    newDiv.addEventListener('mousedown', changeColor);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
     container.appendChild(newDiv);
   }
@@ -19,17 +19,22 @@ function toggleGridlines () {
   }
 }
 
-function boxToBlack(mouseEvent) {
+function changeColor(mouseEvent) {
   if (mouseEvent.type === 'mouseover') {
-    mouseEvent.target.style.backgroundColor = "black";
+    mouseEvent.target.style.backgroundColor = currentColor;
   }
 }
 
+let currentColor = "black";
 const container = document.querySelector("#grid-container");
-
+const colorPicker = document.querySelector("#color-picker");
 const slider = document.querySelector("#gridSlider");
 const output = document.querySelector("#sliderValue");
 output.innerHTML = slider.value + "x" + slider.value; 
+
+colorPicker.oninput = function () {
+  currentColor = this.value;
+}
 
 slider.oninput = function() {
   output.innerHTML = this.value + "x" + this.value;

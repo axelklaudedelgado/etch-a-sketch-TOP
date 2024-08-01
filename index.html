@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet">
 </head>
 <body>
     <script src="logic.js" defer></script>
     <div id="container">
+        <div id="buttons-container">
+            <input type="color" id="color-picker" value="#000000">
+            <button id="toggle-grid">Toggle Grid</button>
+            <button id="clear">Clear</button>
+            <button id="rainbow">Rainbow</button>
+            <button id="toggle-hover">Hover</button>
+            <button id="shade">Shade</button>
+        </div>
         <div id="grid-container"></div>
         <div class="sliderContainer">
             <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
