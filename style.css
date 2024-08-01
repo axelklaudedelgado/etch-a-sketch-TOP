@@ -21,6 +21,30 @@ body {
     flex-wrap: wrap;
 }
 
+.options {
+    border: 1px solid rgb(182, 180, 180);
+    border-radius: 15px;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 8px;
+    box-shadow: 0 5px rgb(255, 214, 214);
+}
+
+.options:hover {
+    background-color: rgba(197, 197, 197, 0.986);;
+}
+
+.options:active {
+    background-color: rgba(197, 197, 197, 0.986);
+    box-shadow: 0 2px hwb(0 68% 0%);
+    transform: translateY(3px);
+  }
+
 .sliderContainer {
     width: 250px;
 }
