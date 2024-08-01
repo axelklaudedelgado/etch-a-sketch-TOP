@@ -18,7 +18,7 @@ body {
     border-radius: 5px;
     background-color: white;
     display: flex;
-    flex-flow: wrap row;
+    flex-wrap: wrap;
 }
 
 .sliderContainer {
