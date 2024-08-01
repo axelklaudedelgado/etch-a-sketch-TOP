@@ -4,10 +4,18 @@ function createGridBoxes (sliderValue) {
   for(let i=0; i < sliderValue * sliderValue; i++){
     const newDiv = document.createElement('div');
     newDiv.id = 'box' + i;
+    newDiv.className = "gridBox";
     newDiv.addEventListener('mouseover', boxToBlack);
     newDiv.addEventListener('mousedown', boxToBlack);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
     container.appendChild(newDiv);
+  }
+}
+
+function toggleGridlines () {
+  let gridBoxes = document.querySelectorAll(".gridBox");
+  for (let i = 0; i < gridBoxes.length; i++) {
+      gridBoxes[i].style.outline = "1px solid #F8F8F8";
   }
 }
 
