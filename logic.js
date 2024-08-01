@@ -4,8 +4,16 @@ function createGridBoxes (sliderValue) {
   for(let i=0; i < sliderValue * sliderValue; i++){
     let newDiv = document.createElement('div');
     newDiv.id = 'box' + i;
+    newDiv.addEventListener('mouseover', boxToBlack);
+    newDiv.addEventListener('mousedown', boxToBlack);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
     container.appendChild(newDiv);
+  }
+}
+
+function boxToBlack(mouseEvent) {
+  if (mouseEvent.type === 'mouseover') {
+    mouseEvent.target.style.backgroundColor = "black";
   }
 }
 
