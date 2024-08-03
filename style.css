@@ -11,7 +11,7 @@ body {
 }
 
 #screen-container {
-    height: 700px;
+    height: 780px;
     width: 800px;
     background-color: #b40204;
     display: flex;
@@ -20,13 +20,14 @@ body {
     align-items: center;
     border-radius: 20px;
     background-image: radial-gradient(#b40204, #e90408af, #960002);
+    box-shadow: rgba(0, 0, 0, 0.701) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 #title-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 135px;
+    height: 135px;
     font-family: "Uncial Antiqua", system-ui;
     font-size: 80px;
     font-weight: 400;
@@ -39,17 +40,18 @@ body {
 }
 
 #grid-container {
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
     border: 2px solid rgb(182, 180, 180);
     background-color: white;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .bottom-container {
     width: 100%;
-    height: 140px;
+    height: 135px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -81,9 +83,8 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Raleway', sans-serif;
-    font-weight: 700;
     font-size: 15px;     
-    text-transform: uppercase;
+    color: white;
 }
 
 .knob-2-text {
