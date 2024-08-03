@@ -33,15 +33,28 @@ function toggleGridlines () {
   }
 }
 
+function clearColor () {
+  let gridBoxes = document.querySelectorAll(".gridBox");
+
+  for (let i = 0; i < gridBoxes.length; i++) {
+    gridBoxes[i].style.backgroundColor = "";
+  }
+}
+
 function changeColor(mouseEvent) {
   if (mouseEvent.type === 'mouseover') {
     mouseEvent.target.style.backgroundColor = currentColor;
   }
 }
 
+function changeValue() {
+  sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
+}
+
 let gridStatus = "Off";
 let currentColor = "black";
 const gridToggle = document.querySelector("#toggle-grid")
+const clear = document.querySelector("#clear");
 const slider = document.querySelector(".grid-slider");
 const sliderValueDisplay = document.querySelector(".knob-2-text");
 const container = document.querySelector("#grid-container");
@@ -55,10 +68,7 @@ sliderValueDisplay.textContent = "Grid: " + parseInt(slider.value) + "x" + parse
 
 slider.addEventListener("knob-move-change", changeValue);
 gridToggle.addEventListener("click", toggleGridlines);
-
-function changeValue() {
-  sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
-}
+clear.addEventListener("click", clearColor);
 
 slider.addEventListener("knob-move-end", function () {
   container.replaceChildren();
