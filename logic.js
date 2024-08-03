@@ -8,14 +8,28 @@ function createGridBoxes (sliderValue) {
     newDiv.addEventListener('mouseover', changeColor);
     newDiv.addEventListener('mousedown', changeColor);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
+    if (gridStatus == "On") {
+      newDiv.style.outline = "1px solid #F8F8F8";
+    }
     container.appendChild(newDiv);
   }
 }
 
 function toggleGridlines () {
   let gridBoxes = document.querySelectorAll(".gridBox");
-  for (let i = 0; i < gridBoxes.length; i++) {
+
+  if (gridStatus == "Off") {
+    gridStatus = "On";
+    gridToggle.textContent = "Grid: " + gridStatus;
+    for (let i = 0; i < gridBoxes.length; i++) {
       gridBoxes[i].style.outline = "1px solid #F8F8F8";
+    }
+  } else {
+    gridStatus = "Off";
+    gridToggle.textContent = "Grid: " + gridStatus;
+    for (let i = 0; i < gridBoxes.length; i++) {
+      gridBoxes[i].style.outline = "";
+    }
   }
 }
 
@@ -25,7 +39,9 @@ function changeColor(mouseEvent) {
   }
 }
 
+let gridStatus = "Off";
 let currentColor = "black";
+const gridToggle = document.querySelector("#toggle-grid")
 const slider = document.querySelector(".grid-slider");
 const sliderValueDisplay = document.querySelector(".knob-2-text");
 const container = document.querySelector("#grid-container");
@@ -38,6 +54,7 @@ colorPicker.oninput = function () {
 sliderValueDisplay.textContent = "Grid: " + parseInt(slider.value) + "x" + parseInt(slider.value);
 
 slider.addEventListener("knob-move-change", changeValue);
+gridToggle.addEventListener("click", toggleGridlines);
 
 function changeValue() {
   sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
@@ -49,3 +66,4 @@ slider.addEventListener("knob-move-end", function () {
 })
 
 createGridBoxes(slider.value);
+gridToggle.textContent = "Grid: " + gridStatus;
