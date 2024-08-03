@@ -18,12 +18,13 @@
             </div>
             <div id="grid-container"></div>
             <div class="bottom-container">
-                <div class="knob-container"><input type="color" id="color-picker" value="#000000"></div>
+                <div class="knob-container"><label>Color: </label><input type="color" id="color-picker" value="#000000"></div>
                 <div id="slider-container">
                     <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
                     <p class="sliderValueText">Grid Size: <span id="sliderValue"></span></p>
                 </div>
                 <div class="knob-container">
+                    <label class="knob-2-text">Grid: </label>
                     <input-knob value="16" scale="100" min="0" max="100" class="grid-slider"><div class="mark">●</div></input-knob>
                 </div>
             </div>

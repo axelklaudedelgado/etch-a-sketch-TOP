@@ -131,3 +131,18 @@ body {
     font: bold 200% monospace;
     color: black;
 }
+
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 15px;     
+    text-transform: uppercase;
+}
+
+.knob-2-text {
+    padding-bottom: 5px;
+}
