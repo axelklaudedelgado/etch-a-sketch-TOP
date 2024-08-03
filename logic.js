@@ -26,23 +26,26 @@ function changeColor(mouseEvent) {
 }
 
 let currentColor = "black";
+const slider = document.querySelector(".grid-slider");
+const sliderValueDisplay = document.querySelector(".knob-2-text");
 const container = document.querySelector("#grid-container");
 const colorPicker = document.querySelector("#color-picker");
-const slider = document.querySelector("#gridSlider");
-const output = document.querySelector("#sliderValue");
-output.innerHTML = slider.value + "x" + slider.value; 
 
 colorPicker.oninput = function () {
   currentColor = this.value;
 }
 
-slider.oninput = function() {
-  output.innerHTML = this.value + "x" + this.value;
+sliderValueDisplay.textContent = "Grid: " + parseInt(slider.value) + "x" + parseInt(slider.value);
+
+slider.addEventListener("knob-move-change", changeValue);
+
+function changeValue() {
+  sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
 }
 
-slider.onchange = function () {
+slider.addEventListener("knob-move-end", function () {
   container.replaceChildren();
   createGridBoxes(this.value);
-}
+})
 
 createGridBoxes(slider.value);
