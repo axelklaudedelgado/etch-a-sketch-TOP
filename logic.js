@@ -6,7 +6,6 @@ function createGridBoxes (sliderValue) {
     newDiv.id = 'box' + i;
     newDiv.className = "gridBox";
     newDiv.addEventListener('mouseover', changeColor);
-    newDiv.addEventListener('mousedown', changeColor);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
     if (gridStatus == "On") {
       newDiv.style.outline = "1px solid #F8F8F8";
@@ -44,6 +43,15 @@ function clearColor () {
 function changeColor(mouseEvent) {
   if (mouseEvent.type === 'mouseover') {
     mouseEvent.target.style.backgroundColor = currentColor;
+  }
+}
+
+function rainbowMode(mouseEvent) { 
+  let color = '#'; 
+  let letters = ["FF5733", "33FF57", "3357FF", "FFD700", "8A2BE2", "FF1493", "00CED1", "FF4500", "7CFC00", "8B0000", "20B2AA", "DDA0DD", "FF8C00", "4682B4", "6A5ACD", "ADFF2F"]; 
+  color += letters[Math.floor(Math.random() * letters.length)];
+  if (mouseEvent.type === 'mouseover') {
+    mouseEvent.target.style.backgroundColor = color;
   }
 }
 
