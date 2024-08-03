@@ -45,7 +45,7 @@ function changeValue() {
 
 slider.addEventListener("knob-move-end", function () {
   container.replaceChildren();
-  createGridBoxes(this.value);
+  createGridBoxes(parseInt(this.value));
 })
 
 createGridBoxes(slider.value);
