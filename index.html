@@ -6,22 +6,25 @@
     <title>Etch-a-sketch</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
 </head>
 <body>
     <script src="logic.js" defer></script>
+    <script src="https://unpkg.com/input-knob"></script>
     <div id="container">
-        <div id="buttons-container">
-            <input type="color" id="color-picker" value="#000000">
-            <button id="toggle-grid" class="options">Toggle Grid</button>
-            <button id="clear" class="options">Clear</button>
-            <button id="rainbow" class="options">Rainbow</button>
-            <button id="toggle-hover" class="options">Hover</button>
-            <button id="shade" class="options">Shade</button>
-        </div>
-        <div id="grid-container"></div>
-        <div class="sliderContainer">
-            <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
-            <p class="sliderValueText">Grid Size: <span id="sliderValue"></span></p>
+        <div id="screen-container">
+            <div id="title-container">
+                T<span class="smaller-letters">he</span>O<span class="smaller-letters">din</span>S<span class="smaller-letters">ketch</span>
+            </div>
+            <div id="grid-container"></div>
+            <div class="bottom-container">
+                <div><input type="color" id="color-picker" value="#000000"></div>
+                <div id="slider-container">
+                    <input type="range" min="1" max="100" value="16" class="slider" id="gridSlider">
+                    <p class="sliderValueText">Grid Size: <span id="sliderValue"></span></p>
+                </div>
+                <div class="circle"><span></span></div>
+            </div>
         </div>
     </div>
 </body>
