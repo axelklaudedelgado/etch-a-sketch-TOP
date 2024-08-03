@@ -5,7 +5,7 @@ function createGridBoxes (sliderValue) {
     const newDiv = document.createElement('div');
     newDiv.id = 'box' + i;
     newDiv.className = "gridBox";
-    newDiv.addEventListener('mouseover', changeColor);
+    newDiv.addEventListener('mouseover', shadeMode);
     newDiv.style.flex = `1 0 ${gridValueCalculation}%`;
     if (gridStatus == "On") {
       newDiv.style.outline = "1px solid #F8F8F8";
@@ -55,6 +55,23 @@ function rainbowMode(mouseEvent) {
   }
 }
 
+function shadeMode (mouseEvent) {
+  let target = mouseEvent.target
+  let percentValue = parseInt(target.dataset.percent);
+  if (isNaN(percentValue)) percentValue = 100;
+  if (percentValue >= 10) {
+    percentValue -= 10;
+    target.dataset.percent = percentValue;
+  }
+  
+  let rgbColor = `rgb(${percentValue}%,${percentValue}%,${percentValue}%)`
+
+  if (mouseEvent.type === 'mouseover') {
+    target.style.backgroundColor = rgbColor;
+  }
+}
+
+
 function changeValue() {
   sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
 }
@@ -68,15 +85,15 @@ const sliderValueDisplay = document.querySelector(".knob-2-text");
 const container = document.querySelector("#grid-container");
 const colorPicker = document.querySelector("#color-picker");
 
+slider.addEventListener("knob-move-change", changeValue);
+gridToggle.addEventListener("click", toggleGridlines);
+clear.addEventListener("click", clearColor);
+
 colorPicker.oninput = function () {
   currentColor = this.value;
 }
 
 sliderValueDisplay.textContent = "Grid: " + parseInt(slider.value) + "x" + parseInt(slider.value);
-
-slider.addEventListener("knob-move-change", changeValue);
-gridToggle.addEventListener("click", toggleGridlines);
-clear.addEventListener("click", clearColor);
 
 slider.addEventListener("knob-move-end", function () {
   container.replaceChildren();
