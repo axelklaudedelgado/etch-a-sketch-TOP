@@ -8,4 +8,4 @@ This project uses the [input-knob](https://github.com/GoogleChromeLabs/input-kno
 
 ## License
 
-This project is licensed under the [Apache License 2.0](./LICENSE).
+This project is licensed under the [Apache License 2.0](LICENSE).
