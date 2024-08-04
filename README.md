@@ -1,6 +1,6 @@
 # etch-a-sketch-TOP
 
-My first ever project that I really spent a time on. Most functions used adhere to the instructions as stated in TheOdinProject while other functions are referenced from online solutions.
+My first ever project that I really spent a lot of time on. Most functions used adhere to the instructions as stated in TheOdinProject while other functions are referenced from online solutions.
 
 ## Acknowledgements 
 
