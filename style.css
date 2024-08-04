@@ -97,18 +97,16 @@ body {
     padding: 8px;
 }
 
-.knob-2-text {
-    padding-bottom: 5px;
+#grid-slider {
+    border: none;
+    background-image: radial-gradient(white,#c4c4c4, #777777);
 }
 
-.grid-slider {
+.circle {
     width: 110px;
     height: 110px;
-    border: none;
     border-radius: 50%;
-    margin-right: 4px;
-    margin-bottom: 5px;
-    background-image: radial-gradient(white,#c4c4c4, #777777);
+    margin: 5px 4px;
     box-sizing: border-box;
 }
 

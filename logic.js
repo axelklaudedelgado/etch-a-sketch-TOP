@@ -48,18 +48,18 @@ function clearColor () {
   }
 }
 
-function colorMode(mouseEvent) {
-  if (mouseEvent.type === 'mouseover') {
-    mouseEvent.target.style.backgroundColor = currentColor;
-  }
-}
-
 function rainbowMode(mouseEvent) { 
   let color = '#'; 
   let letters = ["FF5733", "33FF57", "3357FF", "FFD700", "8A2BE2", "FF1493", "00CED1", "FF4500", "7CFC00", "8B0000", "20B2AA", "DDA0DD", "FF8C00", "4682B4", "6A5ACD", "ADFF2F"]; 
   color += letters[Math.floor(Math.random() * letters.length)];
   if (mouseEvent.type === 'mouseover') {
     mouseEvent.target.style.backgroundColor = color;
+  }
+}
+
+function colorMode(mouseEvent) {
+  if (mouseEvent.type === 'mouseover') {
+    mouseEvent.target.style.backgroundColor = currentColor;
   }
 }
 
@@ -87,6 +87,7 @@ function changeMode () {
     currentMode = "Rainbow"
     mode.textContent = currentMode;
     clearColor();
+    colorCircleChange();
     for (let i = 0; i < currentGrid.length; i++) {
       currentGrid[i].removeEventListener('mouseover', colorMode);
       currentGrid[i].addEventListener('mouseover', rainbowMode);
@@ -95,6 +96,7 @@ function changeMode () {
     currentMode = "Shade"
     mode.textContent = currentMode;
     clearColor();
+    colorCircleChange();
     for (let i = 0; i < currentGrid.length; i++) {
       currentGrid[i].removeEventListener('mouseover', rainbowMode);
       currentGrid[i].addEventListener('mouseover', shadeMode);
@@ -103,6 +105,7 @@ function changeMode () {
     currentMode = "Color"
     mode.textContent = currentMode;
     clearColor();
+    colorCircleChange();
     for (let i = 0; i < currentGrid.length; i++) {
       currentGrid[i].removeEventListener('mouseover', shadeMode);
       currentGrid[i].addEventListener('mouseover', colorMode);
@@ -120,14 +123,30 @@ function changeValue() {
   sliderValueDisplay.textContent = "Grid: " + parseInt(this.value) + "x" + parseInt(this.value);
 }
 
+function colorCircleChange () {
+  if (currentMode == "Color") {
+    colorCircle.classList.remove("circle");
+    colorPicker.style.display = "block";
+  } else if (currentMode == "Rainbow") {
+    colorCircle.classList.add("circle");
+    colorPicker.style.display = "none";
+    colorCircle.style.background = "conic-gradient(red, yellow, lime, aqua, blue, magenta, red)";
+  } else  if (currentMode == "Shade") {
+    colorCircle.classList.add("circle");
+    colorCircle.style.background = "conic-gradient(#fff, #000)";
+  }
+}
+
 let gridStatus = "Off";
 let currentColor = "black";
 let currentMode = "Color";
 let currentGrid;
-const gridToggle = document.querySelector("#toggle-grid")
+const knobContainer = document.querySelector(".knob-container");
+const colorCircle = document.querySelector("#color-circle");
+const gridToggle = document.querySelector("#toggle-grid");
 const clear = document.querySelector("#clear");
 const mode = document.querySelector("#mode");
-const slider = document.querySelector(".grid-slider");
+const slider = document.querySelector("#grid-slider");
 const sliderValueDisplay = document.querySelector(".knob-2-text");
 const container = document.querySelector("#grid-container");
 const colorPicker = document.querySelector("#color-picker");
