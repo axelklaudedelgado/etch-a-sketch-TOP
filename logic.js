@@ -14,37 +14,37 @@ function createGridBoxes (sliderValue) {
 }
 
 function toggleGridlines () {
-  let gridBoxes = document.querySelectorAll(".gridBox");
+  currentGrid = getGridBoxes();
 
   if (gridStatus == "Off") {
     gridStatus = "On";
     gridToggle.textContent = "Grid: " + gridStatus;
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].style.outline = "1px solid #F8F8F8";
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].style.outline = "1px solid #F8F8F8";
     }
   } else {
     gridStatus = "Off";
     gridToggle.textContent = "Grid: " + gridStatus;
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].style.outline = "";
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].style.outline = "";
     }
   }
 }
 
 function clearColor () {
-  let gridBoxes = document.querySelectorAll(".gridBox");
+  currentGrid = getGridBoxes();
   
   if (currentMode == "Shade") {
     container.replaceChildren();
     createGridBoxes(parseInt(slider.value));
 
-    let gridBoxes = document.querySelectorAll(".gridBox");
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].addEventListener("mouseover", shadeMode);
+    currentGrid = getGridBoxes();
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].addEventListener("mouseover", shadeMode);
     }
   }
-  for (let i = 0; i < gridBoxes.length; i++) {
-    gridBoxes[i].style.backgroundColor = "";
+  for (let i = 0; i < currentGrid.length; i++) {
+    currentGrid[i].style.backgroundColor = "";
   }
 }
 
@@ -81,33 +81,39 @@ function shadeMode (mouseEvent) {
 }
 
 function changeMode () {
-  let gridBoxes = document.querySelectorAll(".gridBox");
+  currentGrid = getGridBoxes();
 
   if (currentMode == "Color") {
     currentMode = "Rainbow"
     mode.textContent = currentMode;
     clearColor();
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].removeEventListener('mouseover', colorMode);
-      gridBoxes[i].addEventListener('mouseover', rainbowMode);
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].removeEventListener('mouseover', colorMode);
+      currentGrid[i].addEventListener('mouseover', rainbowMode);
     }
   } else if (currentMode == "Rainbow") {
     currentMode = "Shade"
     mode.textContent = currentMode;
     clearColor();
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].removeEventListener('mouseover', rainbowMode);
-      gridBoxes[i].addEventListener('mouseover', shadeMode);
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].removeEventListener('mouseover', rainbowMode);
+      currentGrid[i].addEventListener('mouseover', shadeMode);
     }
   } else if (currentMode == "Shade") {
     currentMode = "Color"
     mode.textContent = currentMode;
     clearColor();
-    for (let i = 0; i < gridBoxes.length; i++) {
-      gridBoxes[i].removeEventListener('mouseover', shadeMode);
-      gridBoxes[i].addEventListener('mouseover', colorMode);
+    for (let i = 0; i < currentGrid.length; i++) {
+      currentGrid[i].removeEventListener('mouseover', shadeMode);
+      currentGrid[i].addEventListener('mouseover', colorMode);
     }
   } 
+}
+
+function getGridBoxes () {
+  const gridBoxes = document.querySelectorAll(".gridBox");
+
+  return gridBoxes;
 }
 
 function changeValue() {
@@ -117,6 +123,7 @@ function changeValue() {
 let gridStatus = "Off";
 let currentColor = "black";
 let currentMode = "Color";
+let currentGrid;
 const gridToggle = document.querySelector("#toggle-grid")
 const clear = document.querySelector("#clear");
 const mode = document.querySelector("#mode");
@@ -140,14 +147,14 @@ slider.addEventListener("knob-move-end", function () {
   container.replaceChildren();
   createGridBoxes(parseInt(this.value));
 
-  let gridBoxes = document.querySelectorAll(".gridBox");
-  for (let i = 0; i < gridBoxes.length; i++) {
+  currentGrid = getGridBoxes();
+  for (let i = 0; i < currentGrid.length; i++) {
     if (currentMode == "Color") {
-      gridBoxes[i].addEventListener('mouseover', colorMode);
+      currentGrid[i].addEventListener('mouseover', colorMode);
     } else if (currentMode == "Rainbow") {
-      gridBoxes[i].addEventListener('mouseover', rainbowMode);
+      currentGrid[i].addEventListener('mouseover', rainbowMode);
     } else {
-      gridBoxes[i].addEventListener('mouseover', shadeMode);
+      currentGrid[i].addEventListener('mouseover', shadeMode);
     }
   }
 })
@@ -156,7 +163,7 @@ createGridBoxes(slider.value);
 gridToggle.textContent = "Grid: " + gridStatus;
 mode.textContent = currentMode;
 
-let gridBoxes = document.querySelectorAll(".gridBox");
-for (let i = 0; i < gridBoxes.length; i++) {
-    gridBoxes[i].addEventListener('mouseover', colorMode);
+currentGrid = getGridBoxes();
+for (let i = 0; i < currentGrid.length; i++) {
+  currentGrid[i].addEventListener('mouseover', colorMode);
 }
