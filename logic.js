@@ -1,5 +1,5 @@
 function createGridBoxes (sliderValue) {
-  let gridValueCalculation = 100 / slider.value;
+  let gridValueCalculation = 100 / parseInt(slider.value);
 
   for(let i=0; i < sliderValue * sliderValue; i++){
     const newDiv = document.createElement('div');
@@ -178,7 +178,7 @@ slider.addEventListener("knob-move-end", function () {
   }
 })
 
-createGridBoxes(slider.value);
+createGridBoxes(parseInt(slider.value));
 gridToggle.textContent = "Grid: " + gridStatus;
 mode.textContent = currentMode;
 
